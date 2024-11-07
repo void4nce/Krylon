@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Animated Text</title>
-  <link href="https://fonts.googleapis.com/css2?family=Gotham:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gotham:wght@700&display=swap" rel="stylesheet">
   <style>
     /* Set the background gradient */
     body {
@@ -17,26 +17,19 @@
       overflow: hidden;
       font-family: 'Gotham', sans-serif;
       color: white;
-      animation: gradientBackground 15s ease infinite;
     }
 
-    /* Center the text */
+    /* Style the text */
     #text {
       font-size: 100px;
+      font-weight: bold;
       text-align: center;
       transition: all 1s ease-out;
-    }
-
-    /* Keyframe for smooth background animation */
-    @keyframes gradientBackground {
-      0% { background: linear-gradient(135deg, #8e44ad, #f39c12); }
-      50% { background: linear-gradient(135deg, #f39c12, #8e44ad); }
-      100% { background: linear-gradient(135deg, #8e44ad, #f39c12); }
     }
   </style>
 </head>
 <body>
-  <div id="text">Hello, World!</div>
+  <div id="text">Krylon</div>
 
   <script>
     window.onload = () => {
