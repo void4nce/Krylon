@@ -1,72 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Animated Text</title>
-  <link href="https://fonts.googleapis.com/css2?family=Gotham:wght@700&display=swap" rel="stylesheet">
-  <style>
-    /* Set the background gradient */
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #8e44ad, #f39c12);
-      overflow: hidden;
-      font-family: 'Gotham', sans-serif;
-      color: white;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krylon</title>
+    <!-- Link to Google Fonts for a similar font, like Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Apply a dark background to the body */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Dark background color */
+            font-family: 'Montserrat', sans-serif; /* Use Montserrat or substitute with another font */
+            height: 100vh; /* Full height of the screen */
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
 
-    /* Style the text */
-    #text {
-      font-size: 100px;
-      font-weight: bold;
-      text-align: center;
-      transition: all 1s ease-out;
-    }
-  </style>
+        /* Make sure the container is centered */
+        .container {
+            text-align: center;
+        }
+
+        /* Style for the "Krylon" text */
+        .gradient-text {
+            font-size: 80px; /* Large text */
+            font-weight: bold;
+            background: linear-gradient(45deg, #9b59b6, #00ffff); /* Purple and cyan gradient */
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent; /* Make the text color transparent to show the gradient */
+            padding: 20px; /* Optional: add some space around the text */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Optional: subtle shadow for effect */
+        }
+    </style>
 </head>
 <body>
-  <div id="text">Krylon</div>
-
-  <script>
-    window.onload = () => {
-      // Set a timeout to start the animation after 2 minutes (120 seconds)
-      setTimeout(() => {
-        let textElement = document.getElementById('text');
-        let startTime = Date.now();
-        let duration = 2000; // Duration of the transformation in ms (2 seconds)
-        let initialFontSize = 100; // Starting font size (in px)
-        let targetFontSize = 40; // Target font size (in px)
-        let initialPosition = window.innerHeight / 2 - textElement.offsetHeight / 2;
-
-        // Use a smooth sine function to change the size and position of the text
-        let animationFrame = () => {
-          let elapsedTime = Date.now() - startTime;
-          if (elapsedTime < duration) {
-            let progress = elapsedTime / duration; // Normalized progress (0 to 1)
-            let sineProgress = Math.sin(progress * Math.PI / 2); // Use sine function for smooth animation
-
-            let newFontSize = initialFontSize - (initialFontSize - targetFontSize) * sineProgress;
-            let newPosition = initialPosition - (initialPosition * sineProgress); // Move upwards smoothly
-
-            textElement.style.fontSize = `${newFontSize}px`;
-            textElement.style.transform = `translateY(${newPosition}px)`; // Move vertically
-
-            requestAnimationFrame(animationFrame);
-          } else {
-            // Ensure the text stays at its final state
-            textElement.style.fontSize = `${targetFontSize}px`;
-            textElement.style.transform = `translateY(${0}px)`; // End at the top
-          }
-        };
-
-        // Start the animation
-        animationFrame();
-      }, 120000); // 2 minutes (120 seconds)
-    };
-  </script>
+    <div class="container">
+        <h1 class="gradient-text">Krylon</h1>
+    </div>
 </body>
 </html>
