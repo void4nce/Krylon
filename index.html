@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Text</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gotham:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Set the background gradient */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #8e44ad, #f39c12);
+      overflow: hidden;
+      font-family: 'Gotham', sans-serif;
+      color: white;
+      animation: gradientBackground 15s ease infinite;
+    }
+
+    /* Center the text */
+    #text {
+      font-size: 100px;
+      text-align: center;
+      transition: all 1s ease-out;
+    }
+
+    /* Keyframe for smooth background animation */
+    @keyframes gradientBackground {
+      0% { background: linear-gradient(135deg, #8e44ad, #f39c12); }
+      50% { background: linear-gradient(135deg, #f39c12, #8e44ad); }
+      100% { background: linear-gradient(135deg, #8e44ad, #f39c12); }
+    }
+  </style>
+</head>
+<body>
+  <div id="text">Hello, World!</div>
+
+  <script>
+    window.onload = () => {
+      // Set a timeout to start the animation after 2 minutes (120 seconds)
+      setTimeout(() => {
+        let textElement = document.getElementById('text');
+        let startTime = Date.now();
+        let duration = 2000; // Duration of the transformation in ms (2 seconds)
+        let initialFontSize = 100; // Starting font size (in px)
+        let targetFontSize = 40; // Target font size (in px)
+        let initialPosition = window.innerHeight / 2 - textElement.offsetHeight / 2;
+
+        // Use a smooth sine function to change the size and position of the text
+        let animationFrame = () => {
+          let elapsedTime = Date.now() - startTime;
+          if (elapsedTime < duration) {
+            let progress = elapsedTime / duration; // Normalized progress (0 to 1)
+            let sineProgress = Math.sin(progress * Math.PI / 2); // Use sine function for smooth animation
+
+            let newFontSize = initialFontSize - (initialFontSize - targetFontSize) * sineProgress;
+            let newPosition = initialPosition - (initialPosition * sineProgress); // Move upwards smoothly
+
+            textElement.style.fontSize = `${newFontSize}px`;
+            textElement.style.transform = `translateY(${newPosition}px)`; // Move vertically
+
+            requestAnimationFrame(animationFrame);
+          } else {
+            // Ensure the text stays at its final state
+            textElement.style.fontSize = `${targetFontSize}px`;
+            textElement.style.transform = `translateY(${0}px)`; // End at the top
+          }
+        };
+
+        // Start the animation
+        animationFrame();
+      }, 120000); // 2 minutes (120 seconds)
+    };
+  </script>
+</body>
+</html>
