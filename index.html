@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Krylon</title>
-    <!-- Link to Google Fonts for a similar font, like Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* Apply a darker background with subtle grey lighting on the sides */
         body {
             margin: 0;
             padding: 0;
@@ -20,12 +18,10 @@
             transition: opacity 1s ease-out; /* Fade-out transition */
         }
 
-        /* Make sure the container is centered */
         .container {
             text-align: center;
         }
 
-        /* Style for the "Krylon" text */
         .gradient-text {
             font-size: 80px; /* Large text */
             font-weight: bold;
@@ -35,6 +31,7 @@
             color: transparent; /* Make the text color transparent to show the gradient */
             padding: 20px; /* Optional: add some space around the text */
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Optional: subtle shadow for effect */
+            user-select: none; /* Prevent text selection */
         }
     </style>
 </head>
@@ -46,7 +43,7 @@
     <script>
         // Wait 4 seconds before fading out
         setTimeout(function() {
-            // Add fade-out class to the body
+            // Add fade-out effect to the body
             document.body.style.opacity = '0';
 
             // After the fade-out transition is complete, redirect to Discord
